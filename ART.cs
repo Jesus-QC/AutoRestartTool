@@ -1,4 +1,8 @@
 using Exiled.API.Features;
+using MEC;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace ART
 {
@@ -12,6 +16,8 @@ namespace ART
         {
             base.OnEnabled();
             EventHandlers = new EventHandlers(this) { Rounds = 0 };
+            if (Config.TimeOfRestart != "-1")
+                Timing.RunCoroutine(TimeChecker());
             Exiled.Events.Handlers.Server.RestartingRound += EventHandlers.OnRestarting;
         }
         public override void OnDisabled()
@@ -19,6 +25,18 @@ namespace ART
             base.OnDisabled();
             Exiled.Events.Handlers.Server.RestartingRound -= EventHandlers.OnRestarting;
             EventHandlers = null;
+        }
+        IEnumerator<float> TimeChecker()
+        {
+            for (; ; )
+            {
+                if (DateTime.Now.ToShortTimeString() == Config.TimeOfRestart)
+                {
+                    Round.Restart();
+                    Timing.CallDelayed(1.5f, () => Process.GetCurrentProcess().Kill());
+                }
+                yield return Timing.WaitForSeconds(60);
+            }
         }
     }
 }
