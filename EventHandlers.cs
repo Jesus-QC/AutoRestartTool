@@ -4,7 +4,7 @@ using System.Diagnostics;
 using Exiled.API.Features;
 using MEC;
 
-namespace AutoRestartTool_xRoier
+namespace ART
 {
     internal class EventHandlers
     {
