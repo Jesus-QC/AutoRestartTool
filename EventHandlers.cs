@@ -1,6 +1,3 @@
-using System.Diagnostics;
-using MEC;
-
 namespace ART
 {
     internal class EventHandlers
@@ -12,7 +9,7 @@ namespace ART
         {
             Rounds++;
             if (Rounds >= plugin.Config.RoundsNeededToRestart && plugin.Config.RoundsNeededToRestart > -1)
-                Timing.CallDelayed(1.5f, () => Process.GetCurrentProcess().Kill());
+                GameCore.Console.singleton.TypeCommand("/sr");
         }        
     }
 }

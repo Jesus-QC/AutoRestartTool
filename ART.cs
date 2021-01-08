@@ -2,7 +2,6 @@ using Exiled.API.Features;
 using MEC;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 
 namespace ART
 {
@@ -32,8 +31,7 @@ namespace ART
             {
                 if (DateTime.Now.ToShortTimeString() == Config.TimeOfRestart)
                 {
-                    Round.Restart();
-                    Timing.CallDelayed(1.5f, () => Process.GetCurrentProcess().Kill());
+                GameCore.Console.singleton.TypeCommand("/sr");
                 }
                 yield return Timing.WaitForSeconds(60);
             }

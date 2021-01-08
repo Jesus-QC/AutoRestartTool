@@ -5,7 +5,7 @@ namespace ART
 {
     public sealed class Config : IConfig
     {
-        [Description("Is the plugin enabled? **YOU NEED MULTIADMIN**")]
+        [Description("Is the plugin enabled?")]
         public bool IsEnabled { get; set; } = true;
         [Description("Rounds to restart the server (0 to restart the server every round)[-1 to disable it]")]
         public int RoundsNeededToRestart { get; set; } = 50;
