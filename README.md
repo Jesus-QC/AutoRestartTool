@@ -7,7 +7,7 @@ Download the .dll file of the latest release and place it inside the Exiled Plug
 # Configs
 ```yaml
 AutoRestartingTool:
-# Is the plugin enabled? **YOU NEED MULTIADMIN**
+# Is the plugin enabled?
   is_enabled: true
   # Rounds to restart the server (0 to restart the server every round)[-1 to disable it]
   rounds_needed_to_restart: 50
